@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pic %}
+  <img src="/static/{{profiles.profile_pic}}" class="user-image" alt="User Image">
+        <span class="hidden-xs">{{profiles.name}}</span>
+{% endblock %}
+
+{% block prof %}
+  <img src="/static/{{profiles.profile_pic}}" class="img-circle" alt="User Image">
+                    <p>
+                      {{profiles.name}} -{{profiles.occupation}}
+                     
+                    </p>
+{% endblock %}
+
+{% block starts %}
+  <img src="/static/{{profiles.profile_pic}}" class="img-circle" alt="User Image">
+            
+            </div>
+            <div class="pull-left info">
+              <p>{{profiles.name}}</p>
+              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+{% endblock %}
+{% block content %}
+ <section class="content-header">
+<div class="col-lg-4">
+          <h3>
+           <i class="fa fa-list-ul"></i> <span>Sales List</span>
+            
+          </h3>
+          </div>
+          <div class="col-lg-6">
+          </div>
+          <div class="col-lg-2">
+           <h3>
+           <a href="/sales/"> <span>Add Sales</span> <i class="fa fa-plus"></i></a>
+            
+          </h3>
+          </div>
+          
+        </section>
+<div class="row">
+<div class="col-lg-12">
+
+ <form class="sidebar-form">
+            <div class="input-group">
+              <input type="text" id="filter" name="search" value="" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              
+              </span>
+              
+            </div>
+
+ </form>
+
+
+ 
+ </div>
+ </div>
+ <br>
+
+<div class="row">
+
+ {% for i in salesprofile %}
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <ol class="timeline">
+                
+                <li>
+
+                <i class="fa fa-envelope bg-blue"></i>
+                    <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                        
+                        <h3 class="timeline-header"><a href="{% url 'profile_disp' i.user.id %}">{% for j in profile %}
+                        {% if j.user == i.user %}
+                        {{j.name}}
+                        {% endif %}
+                        {% endfor %}</a></h3>
+                        <div class="timeline-body">
+                            <center><a>{{i.title}}</a></center><br/>
+                            {% if i.pic %}
+                                <center><img src="/static/{{i.pic}}" width="150" height="200"></center>
+                            {% endif %}
+                        </div>
+                        <div class="timeline-footer pull-bottom">
+                            <center><a class="btn btn-primary btn-xs " href="{% url 'sale_detail' i.id %}">details</a></center>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+    {% empty %}
+    <li>Ad Not yet!</li>
+    {% endfor %}
+</div>
+
+
+
+<script src="{% static "js/jQuery-2.1.4.min.js" %}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+    $("#filter").keyup(function(){
+ 
+        // Retrieve the input field text and reset the count to zero
+        var filter = $(this).val(), count = 0;
+ 
+        // Loop through the comment list
+        $("div ol li").each(function(){
+ 
+            // If the list item does not contain the text phrase fade it out
+            if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                $(this).fadeOut();
+ 
+            // Show the list item if the phrase matches and increase the count by 1
+            } else {
+                $(this).show();
+                count++;
+            }
+        });
+ 
+        // Update the count
+        var numberItems = count;
+     	console.log(numberItems)
+     	if (numberItems==0){
+     		$("#filter-count").text("Ad Not yet!");
+     	}
+     	else{
+     		$("#filter-count").text("Search results found = "+count);
+     	}
+        
+    });
+});
+</script>
+{% endblock %}

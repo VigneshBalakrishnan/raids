@@ -1,0 +1,62 @@
+{% load static %}
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Raid | Login</title>
+    
+  
+    <link rel="stylesheet" href="{% static "css/reset.css" %}">
+
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+        <link rel="stylesheet" href="{% static "font/stylesheet.css" %}">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+{% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+
+
+<div class="container">
+  <div class="info">
+    <h1>R<span>AID</span></h1>
+  </div>
+</div>
+<div class="form">
+  <div class="thumbnail"><center><img src="{% static "bg/logo3.png" %}"/></center></div>
+	<form class="login-form" action="/auth/" method="post">{% csrf_token %}
+		
+		<input type="email" name="email" value="" id="email" placeholder="email-id..." required><br/>
+		
+		<input type="password" name="password" value="" id="password" placeholder="password..." required><br/>
+		
+		
+		<button>Login</button>
+		<!-- <input type="submit" value="Sign up"><br/><br/> -->
+		<p class="message">Not registered? <a href="/signup/">Create an account</a></p>
+    <p class="message"><a href="{% url 'password_reset' %}">Forget Password?</a></p>
+	
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
+
+

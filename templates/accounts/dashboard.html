@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pic %}
+  <img src="/static/{{profiles.profile_pic}}" class="user-image" alt="User Image">
+        <span class="hidden-xs">{{profiles.name}}</span>
+{% endblock %}
+
+{% block prof %}
+  <img src="/static/{{profiles.profile_pic}}" class="img-circle" alt="User Image">
+                    <p>
+                      {{profiles.name}} -{{profiles.occupation}}
+                     
+                    </p>
+{% endblock %}
+
+{% block starts %}
+  <img src="/static/{{profiles.profile_pic}}" class="img-circle" alt="User Image">
+            
+            </div>
+            <div class="pull-left info">
+              <p>{{profiles.name}}</p>
+              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+{% endblock %}
+{% block content %}
+  <section class="content-header">
+          <h1>
+           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            
+          </h1>
+          
+        </section>
+<section class="content-header">
+         
+         
+           <div class="row">
+            
+           <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-th-large"></i></span>
+                <div class="info-box-content">
+                  
+                  <span class="info-box-number"><a href="/help/list/">Help</a></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="fa fa-list"></i></span>
+                <div class="info-box-content">
+                  
+                  <span class="info-box-number"><a href="{% url 'sales_detail' %}">Sales</a></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-user-plus"></i></span>
+                <div class="info-box-content">
+                  
+                  <span class="info-box-number"><a href="{% url 'invite' %}">Invite Friends</a></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+
+           
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-user-secret"></i></span>
+                <div class="info-box-content">
+                  
+                  <span class="info-box-number"><a href="{% url 'user_profile' %}">Profile</a></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-rss"></i></span>
+                <div class="info-box-content">
+                  
+                  <span class="info-box-number"><a href="{% url 'contactus' %}"> Contact Us</a></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+          </div>
+        </section>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pic %}
+  <img src="/static/{{profiles.profile_pic}}" class="user-image" alt="User Image">
+        <span class="hidden-xs">{{profiles.name}}</span>
+{% endblock %}
+
+{% block prof %}
+  <img src="/static/{{profiles.profile_pic}}" class="img-circle" alt="User Image">
+                    <p>
+                      {{profiles.name}} -{{profiles.occupation}}
+                     
+                    </p>
+{% endblock %}
+
+{% block starts %}
+  <img src="/static/{{profiles.profile_pic}}" class="img-circle" alt="User Image">
+            
+            </div>
+            <div class="pull-left info">
+              <p>{{profiles.name}}</p>
+              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+{% endblock %}
+{% block content %}
+
+         <section class="content-header">
+          <h1>
+           <i class="fa fa-plus"></i> <span>Add Help</span>
+            
+          </h1>
+          
+        </section>
+		<form action=""   method="post">{% csrf_token %}
+		<div class="box-body">
+                  <div class="form-group">
+                    <input class="form-control" id="title" placeholder="Title:" name="title" value="" required>
+                  </div>
+                  
+                  <div class="form-group" >
+                    <input type="textarea" id="description" placeholder="Description:" class="form-control" style="height: 100px" name="description" value="" required>  
+                  </div>
+                  <div class="form-group">
+                    <div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="urgent" value="" name="urgent"> Urgent
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Add Help</button>
+                  </div>
+                  </form>
+
+{% endblock %}

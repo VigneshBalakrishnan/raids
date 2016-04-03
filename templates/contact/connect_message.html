@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pic %}
+	<img src="/static/{{profiles.profile_pic}}" class="user-image" alt="User Image">
+        <span class="hidden-xs">{{profiles.name}}</span>
+{% endblock %}
+
+{% block prof %}
+	<img src="/static/{{profiles.profile_pic}}" class="img-circle" alt="User Image">
+                    <p>
+                      {{profiles.name}} -{{profiles.occupation}}
+                     
+                    </p>
+{% endblock %}
+
+{% block starts %}
+	<img src="/static/{{profiles.profile_pic}}" class="img-circle" alt="User Image">
+            
+            </div>
+            <div class="pull-left info">
+              <p>{{profiles.name}}</p>
+              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+{% endblock %}
+{% block content %}
+
+<a href="/dashboard/">Dashboard</a><br/>
+
+
+
+{% for list in msgs %}	
+{% if list.receive == user and list.send == sender %}
+{% for i in profile %}
+	<strong>{% if i.user == list.send %}
+		{{i.name}}
+	{% endif %}</strong>
+	{% endfor %}	-	
+	{{list.msg}}<br/>
+
+{% elif list.receive == sender and list.send == user %}
+{% for i in profile %}
+	<strong>{% if i.user == list.send %}
+		{{i.name}}
+	{% endif %}</strong>
+	{% endfor %}	-	
+	{{list.msg}}<br/>
+
+{% endif %}
+{% endfor %}
+
+<h2>Message</h2>
+{% for field in form %}
+{{field.error}}
+{% endfor %}
+
+<form action="" method="POST">{%  csrf_token %}
+	{{form.as_p}}	
+<input type="submit" value="send" name="send"/>
+</form>
+
+{% endblock %}

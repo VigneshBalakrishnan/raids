@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<a href="/sale_detail/{{sale.id}}">Cancel</a>
+<form action="" method="POST">{% csrf_token %}
+{{form.as_p}}
+<input type="submit" value='post comment'>	
+</form>
+</body>
+</html>

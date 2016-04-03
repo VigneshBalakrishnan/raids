@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<a href="/dashboard/">dashboard</a><br/><br/>
+{% if profile.profile_pic %}
+<img src="/static/{{profile.profile_pic}}" width="200" height="200"><br/>
+{% endif %}
+<strong>Name :</strong>{{profile.name}}<br/>
+<strong>Age :</strong>{{profile.age}}<br/>
+<strong>Occupation :</strong>{{profile.occupation}}<br/>
+{% if user == profile.user %}
+<strong>Mobile Number :</strong>{{profile.number}}<br/>
+<strong>Email :</strong>{{profile.email_id}}<br/>
+<strong>Location :</strong>{{profile.location}}<br/>
+{% elif profile.show_personal_details %}
+<strong>Mobile Number :</strong>{{profile.number}}<br/>
+<strong>Email :</strong>{{profile.email_id}}<br/>
+<strong>Location :</strong>{{profile.location}}<br/>
+{% endif %}
+</body>
+</html>
